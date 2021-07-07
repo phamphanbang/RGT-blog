@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    <h1>send help</h1>
+                   <h1> {{ $title ? $title : "NULL" }} </h1>
                 </div>
             </div>
         </div>
