@@ -15,8 +15,9 @@ class UserController extends Controller
     {
         //dd($data);
         //$user = auth()->user();
-        $user = DB::table('users')->where('id',$data)->first();
-        
-        return view('userProfile')->with('user',$user);
+        // $user = DB::table('users')->where('id',$data)->first();
+        $user = User::find($data);
+        $post = $user->posts()->count();
+        return view('userProfile')->with('user',$user)->with('posts',$post);
     }
 }
