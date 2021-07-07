@@ -21,3 +21,6 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
+
+
+Route::get('/profile/{id}',['as' => 'profile','uses' => 'UserController@show']);
