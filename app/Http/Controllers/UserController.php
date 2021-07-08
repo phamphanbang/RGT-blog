@@ -20,7 +20,6 @@ class UserController extends Controller
         $data["user"] = User::find($id);
         $data["posts"] = $data["user"]->posts()->get();
         $data["comments"] = $data["user"]->comments()->count();
-        
         return view('userProfile')->with('data',$data);
     }
 }

@@ -64,6 +64,9 @@
                                     <a class="dropdown-item" href="{{ url('post/create') }}">
                                         {{ __('Add new post') }}
                                      </a>
+                                     <a class="dropdown-item" href="{{ route('indexPost',['id' => auth()->user()->id] ) }}">
+                                        {{ __('My Post') }}
+                                     </a>
                                     <a class="dropdown-item" href="{{ route('profile',['id' => auth()->user()->id] ) }}">
                                        {{ __('My Profile') }}
                                     </a>
