@@ -24,3 +24,5 @@ Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 
 Route::get('/profile/{id}',['as' => 'profile','uses' => 'UserController@show']);
+Route::get('/post/create', 'PostController@create');
+Route::post('/post/create', ['as' => 'createPost','uses' => 'PostController@store']);

@@ -1,18 +1,20 @@
 @extends('layouts.app')
-
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/posts/userProfile.css') }}">
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-xl-10">
             <div class="card">
-                <div class="card-header">{{ __('Profile') }}</div>
+                <div class="card-header"> <h3> {{ $data["user"]->name }} </h3></div>
 
                 <div class="card-body">
                     <div class="card">
                         <div class="card-header">Join on <?php 
-                            $create_at = date_create($user->created_at);
+                            $create_at = date_create($data["user"]->created_at);
                             $y = date_format($create_at, "M d/Y");
-                            $x = date_format($create_at,"H:i:s") ;
+                            $x = date_format($create_at,"H:i A") ;
                             echo $y . " at " . $x;
                             ?></div>
         
@@ -21,17 +23,17 @@
                                 <table>
                                     <tr>
                                         <td>Total Posts</td>
-                                        <td>{{ $posts }}</td>
+                                        <td>{{ $data["posts"]->count(); }}</td>
                                         <td><a href="#">Show all</a></td>
                                     </tr>
                                     <tr>
                                         <td>Published Posts</td>
-                                        <td>{{ $posts }}</td>
+                                        <td>{{ $data["posts"]->count() }}</td>
                                         <td><a href="#">Show all</a></td>
                                     </tr>
                                     <tr>
                                         <td>Posts in Draft</td>
-                                        <td>{{ $posts }}</td>
+                                        <td>{{ $data["posts"]->count() }}</td>
                                         <td><a href="#">Show all</a></td>
                                     </tr>
                                 </table>
@@ -39,7 +41,7 @@
                             
                         </div>
                         <div class="card-header">
-                            Total Comments {{ $posts }}
+                            Total Comments {{ $data["comments"] }}
                         </div>
                     </div>
                     <div class="card mt-4">
@@ -50,15 +52,17 @@
                         <div class="card-body">
                             <div class="card-text">
                                 <table>
+                                    @foreach ($data["posts"] as $post )
                                     <tr>
-                                        <td><a href="#">latest post</a></td>
+                                        <td><a href="#">{{ $post->title }}</a></td>
                                         <td>Join on <?php 
-                                            $create_at = date_create($user->created_at);
+                                            $create_at = date_create($post->created_at);
                                             $y = date_format($create_at, "M d/Y");
-                                            $x = date_format($create_at,"H:i:s") ;
+                                            $x = date_format($create_at,"H:i A") ;
                                             echo $y . " at " . $x;
                                             ?></td>
                                     </tr>
+                                    @endforeach
                                 </table>
                             </div>
                         </div>
@@ -72,18 +76,18 @@
                             <div class="card-text">
                                 <p>folder</p>
                                 <p>folder</p>
-                                <div>
+                                <p>
                                     folder <a href="#">link</a>
-                                </div>
+                                </p>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body border-bottom">
                             <div class="card-text">
                                 <p>folder</p>
                                 <p>folder</p>
-                                <div>
+                                <p>
                                     folder <a href="#">link</a>
-                                </div>
+                                </p>
                             </div>
                         </div>
                     </div>

@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->foreign('author_id')
             ->references('id')->on('users')
             ->onDelete('cascade');
-            $table->string('tilte')->unique();
+            $table->string('title')->unique();
             $table->text('body');
             $table->timestamps();
         });
