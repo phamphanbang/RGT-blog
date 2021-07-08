@@ -26,18 +26,18 @@
                                     <tr>
                                         <td>Total Posts</td>
                                         <td>{{ $data["posts_count"] }}</td>
-                                        <td><a href="#">Show all</a></td>
+                                        <td><a href="{{ route('indexPost',['id' => auth()->user()->id,'type' => "all"] ) }}">Show all</a></td>
                                     </tr>
                                     <tr>
                                         <td>Published Posts</td>
                                         <td>{{ 
                                         $data["posts_public_count"] }}</td>
-                                        <td><a href="#">Show all</a></td>
+                                        <td><a href="{{ route('indexPost',['id' => auth()->user()->id,'type' => "public" ] ) }}">Show all</a></td>
                                     </tr>
                                     <tr>
                                         <td>Posts in Draft</td>
                                         <td>{{ $data["posts_draft_count"] }}</td>
-                                        <td><a href="#">Show all</a></td>
+                                        <td><a href="{{ route('indexPost',['id' => auth()->user()->id,'type' => "draft" ]) }}">Show all</a></td>
                                     </tr>
                                 </table>
                             </div>

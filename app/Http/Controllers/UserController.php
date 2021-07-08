@@ -22,8 +22,8 @@ class UserController extends Controller
         $data["posts"] = $data["user"]->posts;
         $data["posts_count"] = $data["posts"]->count();
         $data["posts_public"] = $data["posts"]->where('public',1)->take(3);
-        $data["posts_public_count"] = $data["posts_public"]->count();
-        $data["posts_draft"] = $data["posts"]->where('draft',0);
+        $data["posts_public_count"] = $data["posts"]->where('public',1)->count();
+        $data["posts_draft"] = $data["posts"]->where('public',0);
         $data["posts_draft_count"] = $data["posts_draft"]->count();
         $data["comments"] = $data["user"]->comments->take(3);
         $data["comments_count"] = $data["comments"]->count();
