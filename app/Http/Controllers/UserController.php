@@ -9,16 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    //
+
 
     public function show($id )
     {
-        // $user = DB::table('users')->where('id',$data)->first();
-        // $user = User::find($id);
-        // $posts = $user->posts()->count();
-        // $comments = $user->comments()->count();
         $data["user"] = User::find($id);
-        //dd($data["user"]->posts->where('public',1));
         $data["posts"] = $data["user"]->posts;
         $data["posts_count"] = $data["posts"]->count();
         $data["posts_public"] = $data["posts"]->where('public',1)->take(3);

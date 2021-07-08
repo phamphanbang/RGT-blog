@@ -19,12 +19,8 @@ Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
-
-
 Route::get('/user/{id}',['as' => 'profile','uses' => 'UserController@show']);
 Route::get('/post/create', 'PostController@create');
 Route::post('/post/create', ['as' => 'createPost','uses' => 'PostController@store']);
-// Route::get('/user/{id}/posts',['as' => 'indexPost','uses' => 'PostController@index']);
 Route::get('/user/{id}/posts/{type}',['as' => 'indexPost','uses' => 'PostController@index']);

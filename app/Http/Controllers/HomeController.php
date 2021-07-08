@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,8 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-        $title = "GetFromA";
-        return view('home')->with('title',$title);
+
+        $data["posts"] = Post::where('public',1)->paginate(2);
+        return view('home')->with('data',$data);
     }
 }

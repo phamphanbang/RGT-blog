@@ -20,12 +20,12 @@
                                 <a href="#">{{ $post->title }}</a>
                                 <a href="#" class="btn btn-secondary float-right" >Edit Post</a>
                             </div>
-                            <p>Join on <?php 
-                                $create_at = date_create($data["user"]->created_at);
+                            <p><?php 
+                                $create_at = date_create($post->created_at);
                                 $y = date_format($create_at, "M d/Y");
                                 $x = date_format($create_at,"H:i A") ;
                                 echo $y . " at " . $x;
-                                ?> by <a href="#">{{ $data["user"]->name }}</a></p>
+                                ?> by <a href="#">{{ $post->user->name }}</a></p>
                         </div>
                         <div class="card-body">
                             {!! $post->body !!}
