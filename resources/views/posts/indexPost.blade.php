@@ -12,11 +12,14 @@
                 </div>
                 <div class="card-body">
                     @foreach ($data["posts"] as $post )
-                        
-                    
+
+
                     <div class="card mb-4">
                         <div class="card-header">
-                            <a href="#">{{ $post->title }}</a>
+                            <div>
+                                <a href="#">{{ $post->title }}</a>
+                                <a href="#" class="btn btn-secondary float-right" >Edit Post</a>
+                            </div>
                             <p>Join on <?php 
                                 $create_at = date_create($data["user"]->created_at);
                                 $y = date_format($create_at, "M d/Y");
@@ -29,6 +32,7 @@
                         </div>
                     </div>
                     @endforeach
+                    {{ $data["posts"]->links() }}
                 </div>
             </div>
         </div>

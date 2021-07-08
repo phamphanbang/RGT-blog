@@ -19,19 +19,27 @@ class PostController extends Controller
     public function store(Request $request)
     {
         # code...
-        // dd($request->body);
+        
         $post = new Post;
         $post->author_id = $request->user()->id;
         $post->title = $request->title;
         $post->body = $request->body;
+        if($request->has("publish")) {
+            $post->public = 1;
+        }
+        else {
+            $post->public = 0;
+        }
         $post->save();
         return view('posts.createPost');
     }
 
     public function index(Request $request){
         $data["user"] = User::find($request->id);
-        $data["posts"] = $data["user"]->posts()->get();
-        
+        $data["posts"] = Post::where('public',1)->paginate(2);
+        // dd($data["posts"]->filter(function ($value, $key) {
+        //     return $value->public == 1;
+        // }));
         return view('posts.indexPost')->with('data',$data);
     }
 }

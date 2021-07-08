@@ -18,8 +18,15 @@ class UserController extends Controller
         // $posts = $user->posts()->count();
         // $comments = $user->comments()->count();
         $data["user"] = User::find($id);
-        $data["posts"] = $data["user"]->posts()->get();
-        $data["comments"] = $data["user"]->comments()->count();
+        //dd($data["user"]->posts->where('public',1));
+        $data["posts"] = $data["user"]->posts;
+        $data["posts_count"] = $data["posts"]->count();
+        $data["posts_public"] = $data["posts"]->where('public',1)->take(3);
+        $data["posts_public_count"] = $data["posts_public"]->count();
+        $data["posts_draft"] = $data["posts"]->where('draft',0);
+        $data["posts_draft_count"] = $data["posts_draft"]->count();
+        $data["comments"] = $data["user"]->comments->take(3);
+        $data["comments_count"] = $data["comments"]->count();
         return view('userProfile')->with('data',$data);
     }
 }

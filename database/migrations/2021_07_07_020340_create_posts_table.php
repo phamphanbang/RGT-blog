@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             ->onDelete('cascade');
             $table->string('title')->unique();
             $table->text('body');
+            $table->boolean('public');
             $table->timestamps();
         });
     }
